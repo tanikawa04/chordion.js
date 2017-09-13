@@ -1,0 +1,113 @@
+{
+    function check(seq, tensions) {
+        var i = 0, j = 0;
+        while (seq[i] && tensions[j])
+            if (seq[i] === tensions[j++])
+                i += 1;
+        return !seq[i];
+    }
+}
+
+start = chord
+
+chord
+    = {
+        root: root
+        type: type
+        tensions: ?tensions
+        bass: ?bass
+    }
+
+root
+    = @(pitchClass ?accidental) -> { return $.join('') }
+
+type
+    = 'add9'            \ 'ADD_NINTH'
+    | major '7'         \ 'MAJOR_SEVENTH'
+    | '7sus4'           \ 'SEVENTH_SUSPENDED_FOURTH'
+    | '7'               \ 'SEVENTH'
+    | '6'               \ 'SIXTH'
+    | 'sus4'            \ 'SUSPENDED_FOURTH'
+    | minor 'add9'      \ 'MINOR_ADD_NINTH'
+    | minor major '7'   \ 'MINOR_MAJOR_SEVENTH'
+    | minor '7'         \ 'MINOR_SEVENTH'
+    | minor '6'         \ 'MINOR_SIXTH'
+    | !'maj' minor      \ 'MINOR'
+    | augument '7'      \ 'AUGUMENT_SEVENTH'
+    | augument          \ 'AUGUMENT'
+    | diminish '7'      \ 'DIMINISH_SEVENTH'
+    | half_diminish     \ 'HALF_DIMINISH'
+    | diminish          \ 'DIMINISH'
+    | ?major            \ 'MAJOR'
+
+tensions
+    = space '(' space @(+(tn_all delimiter)) space ')' space
+
+bass
+    = slash @(pitchClass ?accidental) -> { return $.join('') }
+
+pitchClass
+    = `[A-G]
+
+accidental
+    = '♯'   \ '#'
+    | '＃'  \ '#'
+    | '#'   \ '#'
+    | '♭'   \ 'b'
+    | 'b'   \ 'b'
+
+major
+    = 'M'
+    | '△'
+    | 'maj'
+
+minor
+    = 'min'
+    | 'm'
+    | '-'
+
+augument
+    = 'aug'
+    | '+'
+
+diminish
+    = 'dim'
+    | '○'
+
+half_diminish
+    = 'φ'
+
+tn_all
+    = itv_flat '5'      \ 'b5'
+    | itv_sharp '5'     \ '#5'
+    | itv_flat '9'      \ 'b9'
+    | '9'               \ '9'
+    | itv_sharp '9'     \ '#9'
+    | '11'              \ '11'
+    | itv_sharp '11'    \ '#11'
+    | itv_flat '13'     \ 'b13'
+    | '13'              \ '13'
+
+itv_sharp
+    = '♯'
+    | '＃'
+    | '#'
+    | '+'
+    | '＋'
+
+itv_flat
+    = '♭'
+    | 'b'
+    | '-'
+    | '−'
+
+delimiter
+    = &')'
+    | space ',' space
+    | +' '
+
+slash
+    = space ('/' | '／' | 'on') space
+
+space
+    = *' '
