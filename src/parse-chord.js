@@ -257,22 +257,22 @@ module.exports = (function() {
 													if ($pos === -1) {
 														$pos = pos0;
 														$objsLen = objsLen0;
-														rule$augument();
+														rule$augment();
 														if ($pos !== -1) {
 															if ($input.charCodeAt($pos) === 55)
 																$pos += 1;
 															else
 																$matchingFail("\"7\"");
 															if ($pos !== -1) {
-																$objs[$objsLen++] = "AUGUMENT_SEVENTH";
+																$objs[$objsLen++] = "AUGMENT_SEVENTH";
 															}
 														}
 														if ($pos === -1) {
 															$pos = pos0;
 															$objsLen = objsLen0;
-															rule$augument();
+															rule$augment();
 															if ($pos !== -1) {
-																$objs[$objsLen++] = "AUGUMENT";
+																$objs[$objsLen++] = "AUGMENT";
 															}
 															if ($pos === -1) {
 																$pos = pos0;
@@ -533,7 +533,7 @@ module.exports = (function() {
 			$writeMemo(key, $pos !== -1 && $objs.slice(objsLen0, $objsLen));
 		};
 
-		function rule$augument() {
+		function rule$augment() {
 			var key = $pos * 18 + 9, pos0 = $pos, objsLen0 = $objsLen;
 			if ($readMemo(key)) return;
 			if ($input.substr($pos, 3) === "aug")

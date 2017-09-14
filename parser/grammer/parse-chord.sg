@@ -33,8 +33,8 @@ type
     | minor '7'         \ 'MINOR_SEVENTH'
     | minor '6'         \ 'MINOR_SIXTH'
     | !'maj' minor      \ 'MINOR'
-    | augument '7'      \ 'AUGUMENT_SEVENTH'
-    | augument          \ 'AUGUMENT'
+    | augment '7'       \ 'AUGMENT_SEVENTH'
+    | augment           \ 'AUGMENT'
     | diminish '7'      \ 'DIMINISH_SEVENTH'
     | half_diminish     \ 'HALF_DIMINISH'
     | diminish          \ 'DIMINISH'
@@ -66,7 +66,7 @@ minor
     | 'm'
     | '-'
 
-augument
+augment
     = 'aug'
     | '+'
 

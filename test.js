@@ -26,3 +26,7 @@ console.log(chord.toObj());
 chord = Chordion.parse('FM7/G');
 console.log(chord.toNotes());
 console.log(chord.toObj());
+
+chord = Chordion.parse('C+');
+console.log(chord.toNotes());
+console.log(chord.toObj());
