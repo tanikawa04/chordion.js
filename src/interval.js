@@ -13,7 +13,7 @@ class Interval {
   }
 
   equals(target) {
-    return this._name === target._name;
+    return this.name === target.name;
   }
 }
 

@@ -1,10 +1,5 @@
-const _symbol = Symbol();
-
-export default class PitchClass {
-  constructor(symbol, number, name) {
-    if (symbol !== _symbol) {
-      throw new Error('Cannot call constructor of PitchClass.');
-    }
+class PitchClass {
+  constructor(number, name) {
     this._number = number;
     this._name = name;
   }
@@ -17,79 +12,31 @@ export default class PitchClass {
     return this._name;
   }
 
-  static get C() {
-    return new PitchClass(_symbol, 0, 'C');
-  }
-
-  static get CS() {
-    return new PitchClass(_symbol, 1, 'C#');
-  }
-
-  static get DF() {
-    return new PitchClass(_symbol, 1, 'Db');
-  }
-
-  static get D() {
-    return new PitchClass(_symbol, 2, 'D');
-  }
-
-  static get DS() {
-    return new PitchClass(_symbol, 3, 'D#');
-  }
-
-  static get EF() {
-    return new PitchClass(_symbol, 3, 'Eb');
-  }
-
-  static get E() {
-    return new PitchClass(_symbol, 4, 'E');
-  }
-
-  static get FF() {
-    return new PitchClass(_symbol, 4, 'Fb');
-  }
-
-  static get F() {
-    return new PitchClass(_symbol, 5, 'F');
-  }
-
-  static get FS() {
-    return new PitchClass(_symbol, 6, 'F#');
-  }
-
-  static get GF() {
-    return new PitchClass(_symbol, 6, 'Gb');
-  }
-
-  static get G() {
-    return new PitchClass(_symbol, 7, 'G');
-  }
-
-  static get GS() {
-    return new PitchClass(_symbol, 8, 'G#');
-  }
-
-  static get AF() {
-    return new PitchClass(_symbol, 8, 'Ab');
-  }
-
-  static get A() {
-    return new PitchClass(_symbol, 9, 'A');
-  }
-
-  static get AS() {
-    return new PitchClass(_symbol, 10, 'A#');
-  }
-
-  static get BF() {
-    return new PitchClass(_symbol, 10, 'Bb');
-  }
-
-  static get B() {
-    return new PitchClass(_symbol, 11, 'B');
-  }
-
-  static get CF() {
-    return new PitchClass(_symbol, 11, 'Cb');
+  equals(target) {
+    return this.number === target.number;
   }
 }
+
+export default {
+  get BS() { return new PitchClass(0, 'B#'); },
+  get C() { return new PitchClass(0, 'C'); },
+  get CS() { return new PitchClass(1, 'C#'); },
+  get DF() { return new PitchClass(1, 'Db'); },
+  get D() { return new PitchClass(2, 'D'); },
+  get DS() { return new PitchClass(3, 'D#'); },
+  get EF() { return new PitchClass(3, 'Eb'); },
+  get E() { return new PitchClass(4, 'E'); },
+  get FF() { return new PitchClass(4, 'Fb'); },
+  get ES() { return new PitchClass(5, 'E#'); },
+  get F() { return new PitchClass(5, 'F'); },
+  get FS() { return new PitchClass(6, 'F#'); },
+  get GF() { return new PitchClass(6, 'Gb'); },
+  get G() { return new PitchClass(7, 'G'); },
+  get GS() { return new PitchClass(8, 'G#'); },
+  get AF() { return new PitchClass(8, 'Ab'); },
+  get A() { return new PitchClass(9, 'A'); },
+  get AS() { return new PitchClass(10, 'A#'); },
+  get BF() { return new PitchClass(10, 'Bb'); },
+  get B() { return new PitchClass(11, 'B'); },
+  get CF() { return new PitchClass(11, 'Cb'); }
+};
