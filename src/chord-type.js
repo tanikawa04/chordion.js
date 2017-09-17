@@ -64,7 +64,11 @@ export default class ChordType {
   }
 
   static get AUGMENT_SEVENTH() {
-    return new ChordType(_symbol, [Interval.P1, Interval.M3, Interval.m6, Interval.m7], 'aug7');
+    return new ChordType(_symbol, [Interval.P1, Interval.M3, Interval.A5, Interval.m7], 'aug7');
+  }
+
+  static get AUGMENT_MAJOR_SEVENTH() {
+    return new ChordType(_symbol, [Interval.P1, Interval.M3, Interval.A5, Interval.M7], 'augM7');
   }
 
   static get MINOR_SEVENTH() {

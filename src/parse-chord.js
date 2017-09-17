@@ -259,12 +259,15 @@ module.exports = (function() {
 														$objsLen = objsLen0;
 														rule$augment();
 														if ($pos !== -1) {
-															if ($input.charCodeAt($pos) === 55)
-																$pos += 1;
-															else
-																$matchingFail("\"7\"");
+															rule$major();
 															if ($pos !== -1) {
-																$objs[$objsLen++] = "AUGMENT_SEVENTH";
+																if ($input.charCodeAt($pos) === 55)
+																	$pos += 1;
+																else
+																	$matchingFail("\"7\"");
+																if ($pos !== -1) {
+																	$objs[$objsLen++] = "AUGMENT_MAJOR_SEVENTH";
+																}
 															}
 														}
 														if ($pos === -1) {
@@ -272,45 +275,59 @@ module.exports = (function() {
 															$objsLen = objsLen0;
 															rule$augment();
 															if ($pos !== -1) {
-																$objs[$objsLen++] = "AUGMENT";
+																if ($input.charCodeAt($pos) === 55)
+																	$pos += 1;
+																else
+																	$matchingFail("\"7\"");
+																if ($pos !== -1) {
+																	$objs[$objsLen++] = "AUGMENT_SEVENTH";
+																}
 															}
 															if ($pos === -1) {
 																$pos = pos0;
 																$objsLen = objsLen0;
-																rule$diminish();
+																rule$augment();
 																if ($pos !== -1) {
-																	if ($input.charCodeAt($pos) === 55)
-																		$pos += 1;
-																	else
-																		$matchingFail("\"7\"");
-																	if ($pos !== -1) {
-																		$objs[$objsLen++] = "DIMINISH_SEVENTH";
-																	}
+																	$objs[$objsLen++] = "AUGMENT";
 																}
 																if ($pos === -1) {
 																	$pos = pos0;
 																	$objsLen = objsLen0;
-																	rule$half_diminish();
+																	rule$diminish();
 																	if ($pos !== -1) {
-																		$objs[$objsLen++] = "HALF_DIMINISH";
+																		if ($input.charCodeAt($pos) === 55)
+																			$pos += 1;
+																		else
+																			$matchingFail("\"7\"");
+																		if ($pos !== -1) {
+																			$objs[$objsLen++] = "DIMINISH_SEVENTH";
+																		}
 																	}
 																	if ($pos === -1) {
 																		$pos = pos0;
 																		$objsLen = objsLen0;
-																		rule$diminish();
+																		rule$half_diminish();
 																		if ($pos !== -1) {
-																			$objs[$objsLen++] = "DIMINISH";
+																			$objs[$objsLen++] = "HALF_DIMINISH";
 																		}
 																		if ($pos === -1) {
 																			$pos = pos0;
 																			$objsLen = objsLen0;
-																			rule$major();
+																			rule$diminish();
+																			if ($pos !== -1) {
+																				$objs[$objsLen++] = "DIMINISH";
+																			}
 																			if ($pos === -1) {
 																				$pos = pos0;
 																				$objsLen = objsLen0;
-																			}
-																			if ($pos !== -1) {
-																				$objs[$objsLen++] = "MAJOR";
+																				rule$major();
+																				if ($pos === -1) {
+																					$pos = pos0;
+																					$objsLen = objsLen0;
+																				}
+																				if ($pos !== -1) {
+																					$objs[$objsLen++] = "MAJOR";
+																				}
 																			}
 																		}
 																	}

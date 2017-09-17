@@ -38,6 +38,9 @@ function transformTypeAndTensions(type, tensions) {
     if (type.equals(ChordType.SEVENTH)) {
       dstType = ChordType.AUGMENT_SEVENTH;
       dstTensions = tensions.filter(tension => !tension.equals(Interval.A5));
+    } else if (type.equals(ChordType.MAJOR_SEVENTH)) {
+      dstType = ChordType.AUGMENT_MAJOR_SEVENTH;
+      dstTensions = tensions.filter(tension => !tension.equals(Interval.A5));
     } else if (type.equals(ChordType.MAJOR)) {
       dstType = ChordType.AUGMENT;
       dstTensions = tensions.filter(tension => !tension.equals(Interval.A5));
