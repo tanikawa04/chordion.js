@@ -1,5 +1,6 @@
 import parseChord from './parse-chord';
 import Chord from './chord';
+import PitchClass from './pitch-class';
 import ChordType from './chord-type';
 import Interval from './interval';
 
@@ -27,6 +28,7 @@ export default class Chordion {
 
 export {
   Chord,
+  PitchClass,
   ChordType,
   Interval
 };

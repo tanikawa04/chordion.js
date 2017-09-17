@@ -3,8 +3,8 @@ import PitchClass from './pitch-class';
 import ChordType from './chord-type';
 import Interval from './interval';
 
-function convertPitchClass(pitchClass) {
-  return PitchClass[pitchClass.replace('#', 'S').replace('b', 'F')];
+function convertPitchClass(pcText) {
+  return PitchClass[pcText];
 }
 
 function convertTensions(tensions) {

@@ -38,5 +38,21 @@ export default {
   get AS() { return new PitchClass(10, 'A#'); },
   get BF() { return new PitchClass(10, 'Bb'); },
   get B() { return new PitchClass(11, 'B'); },
-  get CF() { return new PitchClass(11, 'Cb'); }
+  get CF() { return new PitchClass(11, 'Cb'); },
+
+  // alias
+  get ['B#']() { return this.BS; },
+  get ['C#']() { return this.CS; },
+  get ['Db']() { return this.DF; },
+  get ['D#']() { return this.DS; },
+  get ['Eb']() { return this.EF; },
+  get ['Fb']() { return this.FF; },
+  get ['E#']() { return this.ES; },
+  get ['F#']() { return this.FS; },
+  get ['Gb']() { return this.GF; },
+  get ['G#']() { return this.GS; },
+  get ['Ab']() { return this.AF; },
+  get ['A#']() { return this.AS; },
+  get ['Bb']() { return this.BF; },
+  get ['Cb']() { return this.CF; }
 };

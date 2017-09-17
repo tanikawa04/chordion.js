@@ -1,6 +1,7 @@
 const {
   default: Chordion,
   Chord,
+  PitchClass,
   ChordType,
   Interval
 } = require('./index');
@@ -30,3 +31,5 @@ console.log(chord.toObj());
 chord = Chordion.parse('C+');
 console.log(chord.toNotes());
 console.log(chord.toObj());
+
+console.log(PitchClass['F#']);
