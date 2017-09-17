@@ -95,9 +95,3 @@ export default class ChordType {
     return new ChordType(_symbol, [Interval.P1, Interval.m3, Interval.d5, Interval.d7], 'dim7');
   }
 }
-
-
-/*
-- AUGMENT_MAJOR_SEVENTH
-- AUGMENT_SIXTH
-*/
