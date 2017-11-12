@@ -25,10 +25,3 @@ export default class Chordion {
     return chord;
   }
 }
-
-export {
-  Chord,
-  PitchClass,
-  ChordType,
-  Interval
-};

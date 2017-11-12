@@ -77,7 +77,7 @@ export default class Chord {
     ].sort((a, b) => a - b);
   }
 
-  toObj() {
+  toObject() {
     return {
       root: this._root.name,
       type: this._type.name,

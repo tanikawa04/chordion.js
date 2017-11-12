@@ -6,7 +6,7 @@ const config = {
   entry: './index.js',
   output: {
     path: __dirname,
-    filename: 'index.js',
+    filename: 'dist/chordion.js',
     library: 'Chordion',
     libraryTarget: 'umd'
   },
@@ -17,12 +17,13 @@ const config = {
         include: path.resolve(__dirname, 'src'),
         loader: 'babel-loader',
         options: {
-          presets: ['es2015']
+          presets: ['es2015'],
+          plugins: ['add-module-exports']
         }
       }
     ]
   },
-  devtool: '#eval-source-map'
+  // devtool: '#eval-source-map'
 };
 
 module.exports = config;
