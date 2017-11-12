@@ -13,7 +13,7 @@ describe('parse#toObject', function () {
   ].forEach(c => {
     it(c[0], () => {
       const chord = Chordion.parse(c[1]);
-      assert.deepEqual(chord.toObject(),c[2]);
+      assert.deepEqual(chord.toObject(), c[2]);
     });
   });
 });
