@@ -2,6 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/tanikawa04/chordion.js/tree/master.svg?style=svg)](https://circleci.com/gh/tanikawa04/chordion.js/tree/master)
 
+Chordion.js is a parser and pretty printer for musical chords. It works in Node.js and web browsers.
+
 ## Installation
 
 ```
@@ -16,12 +18,15 @@ import Chordion from 'chordion.js';
 
 let chord = Chordion.parse('CM7');
 console.log(chord.toObject());   // => { root: 'C', type: 'M7', tensions: [], bass: 'C' }
+console.log(chord.toName());     // => 'CM7'
 
-chord = Chordion.parse('Db/F');
+chord = Chordion.parse('Db on F');
 console.log(chord.toObject());   // => { root: 'Db', type: 'M', tensions: [], bass: 'Db' }
+console.log(chord.toName());     // => 'Db/F'
 
 chord = Chordion.parse('F#m7(9 #11)');
-console.log(chord.toObject());   // => { root: 'F#', type: 'm7', tensions: [ '9', 'A11' ], bass: 'F#' }
+console.log(chord.toObject());   // => { root: 'F#', type: 'm7', tensions: [ 'M9', 'A11' ], bass: 'F#' }
+console.log(chord.toName());     // => 'F#m7(9,#11)'
 ```
 
 ## Supported chords

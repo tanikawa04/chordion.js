@@ -7,19 +7,29 @@ function convertPitchClass(pcText) {
   return PitchClass[pcText];
 }
 
+const tensionDict = {
+  'b5': 'd5',
+  '#5': 'A5',
+  'b9': 'm9',
+  '9': 'M9',
+  '#9': 'A9',
+  '11': 'P11',
+  '#11': 'A11',
+  'b13': 'm13',
+  '13': 'M13'
+};
+
+const inverseTensionDict = Object.keys(tensionDict).reduce(function(obj, key){
+  obj[tensionDict[key]] = key;
+  return obj;
+}, {});
+
 function convertTensions(tensions) {
-  const tensionDict = {
-    'b5': 'd5',
-    '#5': 'A5',
-    'b9': 'm9',
-    '9': 'M9',
-    '#9': 'A9',
-    '11': 'P11',
-    '#11': 'A11',
-    'b13': 'm13',
-    '13': 'M13'
-  };
   return tensions.map(tension => Interval[tensionDict[tension]]);
+}
+
+function invertTensions(tensions) {
+  return tensions.map(tension => inverseTensionDict[tension.name]);
 }
 
 function transformTypeAndTensions(type, tensions) {
@@ -84,5 +94,16 @@ export default class Chord {
       tensions: this._tensions.map(tension => tension.name),
       bass: this._bass.name
     };
+  }
+
+  toName() {
+    let name = this._root.name + this._type.name.replace(/M$/, '');
+    if (this._tensions.length > 0) {
+      name += '(' + invertTensions(this._tensions).join(',') + ')';
+    }
+    if (!this._root.equals(this._bass)) {
+      name += '/' + this._bass.name;
+    }
+    return name;
   }
 }
