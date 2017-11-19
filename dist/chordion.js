@@ -3284,20 +3284,32 @@ function convertPitchClass(pcText) {
   return _pitchClass2.default[pcText];
 }
 
+var tensionDict = {
+  'b5': 'd5',
+  '#5': 'A5',
+  'b9': 'm9',
+  '9': 'M9',
+  '#9': 'A9',
+  '11': 'P11',
+  '#11': 'A11',
+  'b13': 'm13',
+  '13': 'M13'
+};
+
+var inverseTensionDict = Object.keys(tensionDict).reduce(function (obj, key) {
+  obj[tensionDict[key]] = key;
+  return obj;
+}, {});
+
 function convertTensions(tensions) {
-  var tensionDict = {
-    'b5': 'd5',
-    '#5': 'A5',
-    'b9': 'm9',
-    '9': 'M9',
-    '#9': 'A9',
-    '11': 'P11',
-    '#11': 'A11',
-    'b13': 'm13',
-    '13': 'M13'
-  };
   return tensions.map(function (tension) {
     return _interval2.default[tensionDict[tension]];
+  });
+}
+
+function invertTensions(tensions) {
+  return tensions.map(function (tension) {
+    return inverseTensionDict[tension.name];
   });
 }
 
@@ -3384,6 +3396,18 @@ var Chord = function () {
         }),
         bass: this._bass.name
       };
+    }
+  }, {
+    key: 'toName',
+    value: function toName() {
+      var name = this._root.name + this._type.name.replace(/M$/, '');
+      if (this._tensions.length > 0) {
+        name += '(' + invertTensions(this._tensions).join(',') + ')';
+      }
+      if (!this._root.equals(this._bass)) {
+        name += '/' + this._bass.name;
+      }
+      return name;
     }
   }]);
 
